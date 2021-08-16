@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  socket_gateway_LOCAL:
+    image: socket-gateway_socket_gateway:latest     
+    deploy:
+      mode: replicated
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s  
+    ports:
+      - "8050:5000"
+    networks:
+      - dev-overlay
+  prometheus:
+    image: prom/prometheus:main
+    ports:
+      - 9090:9090
+    volumes: 
+      - ./prometheus:/etc/prometheus
+      - prometheus-data:/prometheus
+    command: --web.enable-lifecycle --config.file=/etc/prometheus/prometheus.yml
+    networks:
+      - dev-overlay
+networks:
+  dev-overlay:
+    external: true
+volumes: 
+  prometheus-data:
