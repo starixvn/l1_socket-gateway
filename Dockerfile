@@ -1,4 +1,4 @@
-FROM hub.lumigame.com/base/node:14.16-alpine AS builder
+FROM hub.lumigame.com/base/node:20.9.0-alpine AS builder
 LABEL stage=builder
 WORKDIR /app
 
@@ -8,7 +8,7 @@ RUN yarn install
 COPY . .
 RUN npm run build
 
-FROM hub.lumigame.com/base/node:14.16-alpine
+FROM hub.lumigame.com/base/node:20.9.0-alpine
 WORKDIR /app
 
 RUN apk --no-cache add curl

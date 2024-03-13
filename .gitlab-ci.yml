@@ -1,3 +1,6 @@
+variables:
+    NODEJS_IMAGE: "$DOCKER_REG_LOCAL_URL/base/node:20.9.0-alpine"
+
 include:
     - project: "ci/core-cicd"
       ref: main

@@ -5,7 +5,10 @@ import { EventsGateway } from "./events.gateway";
 
 @Controller("events")
 export class EventsController {
-    constructor(private readonly eventGateWay: EventsGateway, private readonly configService: ConfigService) {}
+    constructor(
+        private readonly eventGateWay: EventsGateway,
+        private readonly configService: ConfigService,
+    ) {}
 
     @Get("metrics")
     getSocketMetrics(@Query("secretKey") secretKey): string {

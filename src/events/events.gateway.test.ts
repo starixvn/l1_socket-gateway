@@ -6,6 +6,7 @@ import { EventsGateway } from "./events.gateway";
 
 let gateway: EventsGateway;
 jest.useFakeTimers();
+jest.spyOn(global, "setTimeout");
 
 beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
