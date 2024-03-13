@@ -27,7 +27,6 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect, 
     private readonly FailedConnectionErrorCode = "SB0010";
     private clients = {};
     private socketIOMetrics: prometheus.SocketIOMetrics;
-    private socketUris = {};
     private enabledMsgpack: boolean;
 
     @WebSocketServer()
@@ -44,12 +43,7 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect, 
             checkForNewNamespaces: false,
         });
 
-        const serviceConfigurations = this.configService.get<string>("services");
-        const env = this.configService.get<string>("env");
         this.enabledMsgpack = this.configService.get<boolean>("enabledMsgPack");
-        Object.entries(serviceConfigurations).forEach(([key, value]) => (this.socketUris[key] = this.formatServiceUri(value, key, env)));
-
-        console.log(this.socketUris);
     }
 
     getSocketMetrics(): string {
@@ -86,7 +80,7 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect, 
             return;
         }
 
-        const socket = this.connectSocket(client, data.gameName, data.session);
+        const socket = this.connectSocket(client, data.gameName, data.session, data.serviceName);
 
         if (socket) {
             socket.on("signedIn", () => {
@@ -144,10 +138,14 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect, 
         }
     }
 
-    private setupGameSocket(client: any, gameName: string) {
-        const socketGameName = gameName.trim().toLowerCase();
-        const socketUri = this.socketUris[socketGameName];
+    private convertToServiceNameUri(serviceName: string) {
+        const name = serviceName.charAt(0).toLowerCase() + serviceName.slice(1);
 
+        return name.replace(/[A-Z]/g, (match) => "-" + match.toLowerCase()) + "-service";
+    }
+
+    private setupGameSocket(client: any, gameName: string, serviceName?: string) {
+        const socketUri = this.formatServiceUri(this.convertToServiceNameUri(serviceName || gameName), gameName);
         if (socketUri === undefined) {
             return null;
         }
@@ -169,8 +167,8 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect, 
         return io(socketUri, options);
     }
 
-    private connectSocket(client: any, gameName: string, session: any): Socket {
-        const gameSocket = this.setupGameSocket(client, gameName);
+    private connectSocket(client: any, gameName: string, session: any, serviceName?: string): Socket {
+        const gameSocket = this.setupGameSocket(client, gameName, serviceName);
 
         if (gameSocket) {
             gameSocket.on("connect", () => {
@@ -233,9 +231,11 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect, 
         return this.clients;
     }
 
-    private formatServiceUri(serviceName: string, gameName: string, env: string): string {
+    private formatServiceUri(serviceName: string, gameName: string): string {
+        const systemType = this.configService.get<string>("systemType");
+        const env = this.configService.get<string>("env");
         const envWithPort = env === "" ? "" : `-${env}-service:5000`;
 
-        return `http://${serviceName + envWithPort}/user/${gameName}`;
+        return `http://${systemType ? systemType + "-" : ""}${serviceName + envWithPort}/user/${gameName.toLowerCase()}`;
     }
 }

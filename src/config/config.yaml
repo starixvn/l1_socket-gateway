@@ -1,29 +1,9 @@
 ---
 env: ""
+systemType: ""
 sentry:
     dsn: "https://6caa1d75e8ab490bbebf159f34a87534@sentry.lumigame.com/33"
     env: "LOCAL"
-services:
-    sedie: "localhost:5002"
-    vipsedie: "localhost:8081"
-    fishprawncrab: "localhost:8082"
-    bigsmall: "localhost:8083"
-    txturbo: "localhost:8084"
-    dragontiger: "localhost:8085"
-    baccarat: "localhost:8080"
-    vipbaccarat: "localhost:8081"
-    specialsedie: "localhost:8082"
-    minisedie: "localhost:8083"
-    kenopromax: "localhost:8084"
-    threecards: "localhost:8085"
-    megakeno: "localhost:8086"
-    megakeno2: "localhost:8086"
-    kenowest: "localhost:8086"
-    kenoeast: "localhost:8086"
-    kenonorth: "localhost:8086"
-    kenosouth: "localhost:8086"
-    kenomini: "localhost:8086"
-    kenomini2: "localhost:8086"
 enabledMsgPack: false
 metrics:
     secretKey: "6c1f0f28-70f2-46ae-b031-22624a6cd8df"

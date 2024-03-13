@@ -1,0 +1,9 @@
+---
+env: "prod"
+systemType: "gn"
+sentry:
+    dsn: "http://cbfe873869b94ef3b69bc2ab764c30da@10.2.189.50:9009/160"
+    env: "prod"
+enabledMsgPack: true
+metrics:
+    secretKey: "6c1f0f28-70f2-46ae-b031-22624a6cd8df"

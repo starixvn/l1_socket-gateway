@@ -1,0 +1,9 @@
+---
+env: "SIT"
+systemType: "gn"
+sentry:
+    dsn: "http://ca6484ba1e52449b88ef820e7fe2325d@10.2.190.51:9009/271"
+    env: "SIT"
+enabledMsgPack: true
+metrics:
+    secretKey: "6c1f0f28-70f2-46ae-b031-22624a6cd8df"
