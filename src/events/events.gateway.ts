@@ -87,6 +87,7 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect, 
                 if (this.clients[client.id]) {
                     this.setGameSocket(client.id, data.gameName, socket);
                     client.emit(data.gameName, { signedIn: true });
+                    socket.emit("getLobbyData");
                 }
             });
         } else {
