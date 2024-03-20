@@ -87,12 +87,25 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect, 
                 if (this.clients[client.id]) {
                     this.setGameSocket(client.id, data.gameName, socket);
                     client.emit(data.gameName, { signedIn: true });
-                    socket.emit("getLobbyData");
                 }
             });
         } else {
             client.emit(data.gameName, { errorCode: this.FailedConnectionErrorCode });
             this.logService.log("Cannot open socket", [data.gameName, data.session.username]);
+        }
+    }
+
+    @UseInterceptors(new RavenInterceptor())
+    @SubscribeMessage("getLobbyData")
+    getLobbyData(@MessageBody() data: any, @ConnectedSocket() client: any) {
+        if (!data?.gameName) {
+            return;
+        }
+
+        const socket = this.getGameSocket(client.id, data.gameName);
+
+        if (socket?.connected) {
+            socket.emit("getLobbyData");
         }
     }
 
@@ -141,8 +154,8 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect, 
 
     private convertToServiceNameUri(serviceName: string) {
         const name = serviceName.charAt(0).toLowerCase() + serviceName.slice(1);
-
-        return name.replace(/[A-Z]/g, (match) => "-" + match.toLowerCase()) + "-service";
+        const separateChar = this.configService.get<string>("separateChar");
+        return name.replace(/[A-Z]|\d/g, (match) => separateChar + match.toLowerCase());
     }
 
     private setupGameSocket(client: any, gameName: string, serviceName?: string) {
@@ -233,10 +246,8 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect, 
     }
 
     private formatServiceUri(serviceName: string, gameName: string): string {
-        const systemType = this.configService.get<string>("systemType");
-        const env = this.configService.get<string>("env");
-        const envWithPort = env === "" ? "" : `-${env}-service:5000`;
+        const serviceNamePattern = this.configService.get<string>("serviceNamePattern");
 
-        return `http://${systemType ? systemType + "-" : ""}${serviceName + envWithPort}/user/${gameName.toLowerCase()}`;
+        return `${serviceNamePattern.replace("{0}", serviceName)}/user/${gameName.toLowerCase()}`;
     }
 }

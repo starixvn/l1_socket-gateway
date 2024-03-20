@@ -1,6 +1,7 @@
 ---
 env: "SIT"
-systemType: "gn"
+serviceNamePattern: "http://gn_{0}_service_sit:5000"
+separateChar: "_"
 sentry:
     dsn: "http://ca6484ba1e52449b88ef820e7fe2325d@10.2.190.51:9009/271"
     env: "SIT"

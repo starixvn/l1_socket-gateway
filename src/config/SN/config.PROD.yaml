@@ -1,6 +1,7 @@
 ---
 env: "prod"
-systemType: "gn"
+serviceNamePattern: "http://gn_{0}_service_prod:5000"
+separateChar: "_"
 sentry:
     dsn: "http://cbfe873869b94ef3b69bc2ab764c30da@10.2.189.50:9009/160"
     env: "prod"
