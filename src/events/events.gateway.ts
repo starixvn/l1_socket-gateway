@@ -152,14 +152,17 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect, 
         }
     }
 
-    private convertToServiceNameUri(serviceName: string) {
-        const name = serviceName.charAt(0).toLowerCase() + serviceName.slice(1);
+    private convertToServiceNameUri(gameName: string, serviceName?: string) {
         const separateChar = this.configService.get<string>("separateChar");
-        return name.replace(/[A-Z]|\d/g, (match) => separateChar + match.toLowerCase());
+        if (serviceName) {
+            return serviceName.replace(/-|_/g, separateChar);
+        }
+        const name = gameName.charAt(0).toLowerCase() + gameName.slice(1);
+        return name.replace(/[A-Z]|\d+|[A-Z](?=\d)/g, (match) => separateChar + match.toLowerCase());
     }
 
     private setupGameSocket(client: any, gameName: string, serviceName?: string) {
-        const socketUri = this.formatServiceUri(this.convertToServiceNameUri(serviceName || gameName), gameName);
+        const socketUri = this.formatServiceUri(this.convertToServiceNameUri(gameName, serviceName), gameName);
         if (socketUri === undefined) {
             return null;
         }
