@@ -3,7 +3,7 @@ env: "SIT"
 serviceNamePattern: "http://gn-{0}-service-sit-service:5000"
 separateChar: "_"
 sentry:
-    dsn: "https://d039f2abe16b4252a70cdf60fff232b6@10.2.190.51:9009/282"
+    dsn: "http://d039f2abe16b4252a70cdf60fff232b6@10.2.190.51:9009/282"
     env: "SIT"
 enabledMsgPack: true
 metrics:
