@@ -80,7 +80,7 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect, 
             return;
         }
 
-        const socket = this.connectSocket(client, data.gameName, data.session, data.serviceName);
+        const socket = this.connectSocket(client, data.gameName, data.session, data.serviceName, data.receivedEvents);
 
         if (socket) {
             socket.on("signedIn", () => {
@@ -184,7 +184,7 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect, 
         return io(socketUri, options);
     }
 
-    private connectSocket(client: any, gameName: string, session: any, serviceName?: string): Socket {
+    private connectSocket(client: any, gameName: string, session: any, serviceName?: string, receivedEvents?: string[]): Socket {
         const gameSocket = this.setupGameSocket(client, gameName, serviceName);
 
         if (gameSocket) {
@@ -198,7 +198,11 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect, 
 
             gameSocket.on(gameName, (data: any) => {
                 try {
-                    client.emit(gameName, data);
+                    if (receivedEvents) {
+                        Object.keys(data).some((key: string) => receivedEvents.includes(key)) && client.emit(gameName, data);
+                    } else {
+                        client.emit(gameName, data);
+                    }
                 } catch (ex) {
                     this.logService.error(ex);
                 }
