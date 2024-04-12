@@ -1,5 +1,5 @@
 variables:
-    NODEJS_IMAGE: "$DOCKER_REG_LOCAL_URL/base/node:20.9.0-alpine"
+    NODEJS_IMAGE: "$DOCKER_REG_LOCAL_URL/base/node:20.9.0-alpine-24h1.1"
 
 include:
     - project: "ci/core-cicd"
