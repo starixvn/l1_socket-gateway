@@ -1,0 +1,10 @@
+---
+env: "LOCAL_1"
+serviceNamePattern: "http://gn-{0}-service-local1-service:5000"
+separateChar: "-"
+sentry:
+    dsn: "https://81e47b9ef0c34ab08c30a8612d9a348e@sentry.lumigame.com/85"
+    env: "LOCAL_1"
+enabledMsgPack: false
+metrics:
+    secretKey: "6c1f0f28-70f2-46ae-b031-22624a6cd8df"
