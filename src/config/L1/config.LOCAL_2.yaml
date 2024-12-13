@@ -29,4 +29,4 @@ enabledMsgPack: false
 metrics:
     secretKey: "6c1f0f28-70f2-46ae-b031-22624a6cd8df"
 serviceUrlPattern: "http://l1-{0}-service-local2-service:5000"
-serviceNameSeparator: "_"
+serviceNameSeparator: "-"
