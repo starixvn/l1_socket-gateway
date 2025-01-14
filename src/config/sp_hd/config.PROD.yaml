@@ -1,0 +1,10 @@
+---
+env: "prod"
+serviceNamePattern: "http://sp_hd_{0}_service_prod:5000"
+separateChar: "_"
+sentry:
+    dsn: "http://f457113be82441879a991096fce8c26c@10.2.189.50:9009/172"
+    env: "prod"
+enabledMsgPack: true
+metrics:
+    secretKey: "6c1f0f28-70f2-46ae-b031-22624a6cd8df"

@@ -1,0 +1,10 @@
+---
+env: "UAT"
+serviceNamePattern: "http://sp_hd_{0}_service_uat:5000"
+separateChar: "_"
+sentry:
+    dsn: "http://817eba6db40b4010bbce8b66b3ca38bc@10.2.190.51:9009/288"
+    env: "UAT"
+enabledMsgPack: true
+metrics:
+    secretKey: "6c1f0f28-70f2-46ae-b031-22624a6cd8df"

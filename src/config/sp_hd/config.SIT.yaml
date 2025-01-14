@@ -1,0 +1,10 @@
+---
+env: "SIT"
+serviceNamePattern: "http://sp_hd_{0}_service_sit:5000"
+separateChar: "_"
+sentry:
+    dsn: "http://d039f2abe16b4252a70cdf60fff232b6@10.2.190.51:9009/282"
+    env: "SIT"
+enabledMsgPack: true
+metrics:
+    secretKey: "6c1f0f28-70f2-46ae-b031-22624a6cd8df"
