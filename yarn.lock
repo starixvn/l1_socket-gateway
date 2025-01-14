@@ -798,7 +798,7 @@
     lodash.omit "4.5.0"
     tslib "2.5.0"
 
-"@nestjs/cli@^8.0.0":
+"@nestjs/cli@^8.2.8":
   version "8.2.8"
   resolved "http://npm.lumigame.com/@nestjs/cli/-/cli-8.2.8.tgz#63e5b477f90e6d0238365dcc6236b95bf4f0c807"
   integrity sha512-y5Imcw1EY0OxD3POAM7SLUB1rFdn5FjbfSsyJrokjKmXY+i6KcBdbRrv3Ox7aeJ4W7wXuckIXZEUlK6lC52dnA==
