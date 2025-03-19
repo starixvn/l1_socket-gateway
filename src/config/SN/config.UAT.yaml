@@ -1,7 +1,7 @@
 ---
 env: "UAT"
-serviceNamePattern: "http://gn_{0}_service_uat:5000"
-separateChar: "_"
+serviceNamePattern: "http://gn-{0}-service-uat-service:5000"
+separateChar: "-"
 sentry:
     dsn: "http://817eba6db40b4010bbce8b66b3ca38bc@10.2.190.51:9009/288"
     env: "UAT"
