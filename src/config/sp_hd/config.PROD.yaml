@@ -3,7 +3,7 @@ env: "prod"
 serviceNamePattern: "http://sp_hd_{0}_service_prod:5000"
 separateChar: "_"
 sentry:
-    dsn: "https://f4980024f65945179a125e7ce17286d0@sentry.sabagame.com/178"
+    dsn: "http://f4980024f65945179a125e7ce17286d0@10.2.189.50:9009/178"
     env: "prod"
 enabledMsgPack: true
 metrics:
