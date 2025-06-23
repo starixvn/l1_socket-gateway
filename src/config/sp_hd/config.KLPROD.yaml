@@ -1,0 +1,10 @@
+---
+env: "prod"
+serviceNamePattern: "http://sp_hd_{0}_service_prod:5000"
+separateChar: "_"
+sentry:
+    dsn: "http://f4980024f65945179a125e7ce17286d0@sentry-scklprod-ovs.ops-klprod.gamora.prod/178"
+    env: "prod"
+enabledMsgPack: true
+metrics:
+    secretKey: "6c1f0f28-70f2-46ae-b031-22624a6cd8df"
