@@ -1,0 +1,32 @@
+---
+env: "prod"
+sentry:
+    dsn: "http://7dcd01e3d2a44ece83f2508c9b33bc4c@sentry-scklprod-ovs.ops-klprod.gamora.prod/159"
+    env: "prod"
+
+services:
+    sedie: "http://l1-sedie-service-klprod-service:5000"
+    vipsedie: "http://l1-vip-sedie-service-klprod-service:5000"
+    fishprawncrab: "http://l1-fish-prawn-crab-service-klprod-service:5000"
+    bigsmall: "http://l1-big-small-service-klprod-service:5000"
+    txturbo: "http://l1-turbo-big-small-service-klprod-service:5000"
+    dragontiger: "http://l1-dragon-tiger-service-klprod-service:5000"
+    baccarat: "http://l1-baccarat-service-klprod-service:5000"
+    vipbaccarat: "http://l1-vip-baccarat-service-klprod-service:5000"
+    specialsedie: "http://l1-special-sedie-service-klprod-service:5000"
+    minisedie: "http://l1-sedie-multiplay-service-klprod-service:5000"
+    kenopromax: "http://l1-keno-pro-max-service-klprod-service:5000"
+    threecards: "http://l1-three-cards-service-klprod-service:5000"
+    megakeno: "http://l1-mini-keno-service-klprod-service:5000"
+    megakeno2: "http://l1-mini-keno-service-klprod-service:5000"
+    kenowest: "http://l1-mini-keno-service-klprod-service:5000"
+    kenoeast: "http://l1-mini-keno-service-klprod-service:5000"
+    kenonorth: "http://l1-mini-keno-service-klprod-service:5000"
+    kenosouth: "http://l1-mini-keno-service-klprod-service:5000"
+    kenomini: "http://l1-mini-keno-service-klprod-service:5000"
+    kenomini2: "http://l1-mini-keno-service-klprod-service:5000"
+enabledMsgPack: true
+metrics:
+    secretKey: "6c1f0f28-70f2-46ae-b031-22624a6cd8df"
+serviceUrlPattern: "http://l1-{0}-service-klprod-service:5000"
+serviceNameSeparator: "-"
