@@ -1,7 +1,7 @@
 ---
 env: "SIT"
-serviceNamePattern: "http://sp_hd_{0}_service_sit:5000"
-separateChar: "_"
+serviceNamePattern: "http://sp-hd-{0}-service-sit-service:5000"
+separateChar: "-"
 sentry:
     dsn: "http://d039f2abe16b4252a70cdf60fff232b6@10.2.190.51:9009/282"
     env: "SIT"
