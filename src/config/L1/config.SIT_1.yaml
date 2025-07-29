@@ -1,0 +1,32 @@
+---
+env: "SIT_1"
+sentry:
+    dsn: "http://00a5a091854d44c9b0c7a95662991d19@10.2.190.51:9009/269"
+    env: "SIT_1"
+
+services:
+    sedie: "http://l1-sedie-service-sit1-service:5000"
+    vipsedie: "http://l1-vip-sedie-service-sit1-service:5000"
+    fishprawncrab: "http://l1-fish-prawn-crab-service-sit1-service:5000"
+    bigsmall: "http://l1-big-small-service-sit1-service:5000"
+    txturbo: "http://l1-turbo-big-small-service-sit1-service:5000"
+    dragontiger: "http://l1-dragon-tiger-service-sit1-service:5000"
+    baccarat: "http://l1-baccarat-service-sit1-service:5000"
+    vipbaccarat: "http://l1-vip-baccarat-service-sit1-service:5000"
+    specialsedie: "http://l1-special-sedie-service-sit1-service:5000"
+    minisedie: "http://l1-sedie-multiplay-service-sit1-service:5000"
+    kenopromax: "http://l1-keno-pro-max-service-sit1-service:5000"
+    threecards: "http://l1-three-cards-service-sit1-service:5000"
+    megakeno: "http://l1-mini-keno-service-sit1-service:5000"
+    megakeno2: "http://l1-mini-keno-service-sit1-service:5000"
+    kenowest: "http://l1-mini-keno-service-sit1-service:5000"
+    kenoeast: "http://l1-mini-keno-service-sit1-service:5000"
+    kenonorth: "http://l1-mini-keno-service-sit1-service:5000"
+    kenosouth: "http://l1-mini-keno-service-sit1-service:5000"
+    kenomini: "http://l1-mini-keno-service-sit1-service:5000"
+    kenomini2: "http://l1-mini-keno-service-sit1-service:5000"
+enabledMsgPack: true
+metrics:
+    secretKey: "6c1f0f28-70f2-46ae-b031-22624a6cd8df"
+serviceUrlPattern: "http://l1-{0}-service-sit1-service:5000"
+serviceNameSeparator: "-"
