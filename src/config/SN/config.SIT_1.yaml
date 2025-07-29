@@ -1,0 +1,10 @@
+---
+env: "SIT_1"
+serviceNamePattern: "http://gn-{0}-service-sit-service:5000"
+separateChar: "-"
+sentry:
+    dsn: "http://d039f2abe16b4252a70cdf60fff232b6@10.2.190.51:9009/282"
+    env: "SIT_1"
+enabledMsgPack: true
+metrics:
+    secretKey: "6c1f0f28-70f2-46ae-b031-22624a6cd8df"
